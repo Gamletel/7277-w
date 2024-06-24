@@ -1,0 +1,72 @@
+@font-face {
+	font-display: swap;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 300;
+	src: url("OpenSans-Light.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 400;
+	src: url("OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 500;
+	src: url("OpenSans-Medium.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 600;
+	src: url("OpenSans-SemiBold.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 700;
+	src: url("OpenSans-Bold.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "OpenSans";
+	font-style: normal;
+	font-weight: 900;
+	src: url("OpenSans-ExtraBold.ttf") format("truetype");
+}
+
+
+@font-face {
+	font-display: swap;
+	font-family: "Golos";
+	font-style: normal;
+	font-weight: 400;
+	src: url("GolosText-Regular.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "Golos";
+	font-style: normal;
+	font-weight: 500;
+	src: url("GolosText-Medium.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "Golos";
+	font-style: normal;
+	font-weight: 600;
+	src: url("GolosText-SemiBold.ttf") format("truetype");
+}
+@font-face {
+	font-display: swap;
+	font-family: "Golos";
+	font-style: normal;
+	font-weight: 700;
+	src: url("GolosText-Bold.ttf") format("truetype");
+}

@@ -1,0 +1,15 @@
+#text-block .sections {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, calc(1.25vw + 16px), 40px);
+}
+#text-block .sections .section__wrapper {
+  display: flex;
+  gap: clamp(15px, calc(0.9375vw + 12px), 30px);
+}
+#text-block .sections .section__text {
+  color: var(--main-text);
+}
+/*============ MEDIA ==================*/
+
+/*# sourceMappingURL=block.css.map */

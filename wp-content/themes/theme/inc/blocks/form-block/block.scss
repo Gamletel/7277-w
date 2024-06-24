@@ -1,0 +1,217 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#form-block {
+  display: flex;
+  gap: adapt(30, 10);
+
+  .block {
+    &__additional {
+      max-width: 430px;
+      width: 100%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-title {
+      margin-bottom: adapt(15, 10);
+    }
+
+    &__subtitle {
+      color: var(--main-text);
+    }
+
+    &__user {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: adapt(30, 15);
+      padding: adapt(20, 10);
+      padding-right: adapt(38, 15);
+      margin-top: adapt(35, 15);
+      border-radius: 5px;
+      background: var(--background-light);
+
+      .user {
+        &__image {
+          position: relative;
+          width: adapt(120,80);
+          height: adapt(120,80);
+          flex-shrink: 0;
+
+          .circle {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            z-index: 1;
+          }
+
+          .image {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        &__content {
+          display: flex;
+          flex-direction: column;
+        }
+
+        &__name {
+          color: var(--head);
+        }
+
+        &__subtitle {
+          position: relative;
+          padding-top: adapt(10, 5);
+          margin-top: adapt(10, 5);
+
+          color: var(--main-text);
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 1px;
+            background: var(--hover);
+          }
+        }
+      }
+    }
+
+    &__form {
+      width: 100%;
+
+      .form {
+        &__inputs {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: adapt(15, 5);
+
+          .input{
+            width: 100%;
+          }
+        }
+
+        textarea {
+          width: 100%;
+          height: 122px;
+          margin-top: adapt(15, 5);
+        }
+
+        &__bottom {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          margin-top: adapt(30, 15);
+
+          .policy {
+            max-width: 296px;
+            color: var(--main-text);
+
+            a {
+              text-decoration-line: underline;
+              text-decoration-skip-ink: none;
+              color: var(--hover);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1500px) {
+  #form-block{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 769px) {
+  #form-block{
+    .block{
+      &__additional{
+        max-width: unset;
+      }
+
+      &__form{
+        .form{
+          &__inputs{
+            grid-template-columns: 1fr;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+  #form-block {
+    .block{
+      &__form {
+        .form{
+          &__bottom{
+            flex-direction: column;
+
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+
+}

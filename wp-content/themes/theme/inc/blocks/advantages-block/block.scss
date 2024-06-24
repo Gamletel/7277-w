@@ -1,0 +1,109 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#advantages-block {
+  border-radius: 5px;
+
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: adapt(40, 20);
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: adapt(30, 15);
+
+      &__title {
+        color: var(--head);
+      }
+
+      &__advantages {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: adapt(20,10);
+        column-gap: adapt(50, 10);
+
+        .advantage{
+          position: relative;
+          padding-top: adapt(4,0);
+          padding-left: adapt(45,35);
+
+          color: var(--main-text);
+
+          &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: adapt(30,24);
+            height: adapt(30,24);
+            background-image: url('../../../assets/images/li.svg');
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 769px) {
+
+}
+
+@media (max-width: 576px) {
+  #advantages-block {
+    .sections {
+      .section{
+        &__advantages{
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 498px) {
+
+}
+
+@media (max-width: 375px) {
+
+}

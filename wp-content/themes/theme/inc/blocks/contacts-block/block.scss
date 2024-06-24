@@ -1,0 +1,177 @@
+// Пример adapt(100, 0, 320, 1200);
+//adapt(Максимальное значение, Мимальное значение, До какого разрешения(По умолчанию 320), От какого разрешения(По умолчанию 1920));
+@function adapt($f-max, $f-min: null, $end: 320, $start: 1920) {
+  @if ($f-min) {
+    $k: calc(($f-max - $f-min) / ($start - $end));
+    $b: $f-min - $k * $end;
+    // Реверсирование значений по необходимости
+    @if ($f-max < $f-min) {
+      $temp: $f-max;
+      $f-max: $f-min;
+      $f-min: $temp;
+    }
+    $w: $k * 100;
+    @return unquote(
+                    "clamp(#{$f_min}px, calc(#{$w}vw + #{$b}px), #{$f_max}px)"
+    );
+  } @else {
+    @return $f-max * 1px;
+  }
+}
+
+#contacts-block {
+  .contacts {
+    display: flex;
+    gap: adapt(30, 15);
+
+    &__links {
+      display: flex;
+      flex-direction: column;
+      gap: adapt(30, 15);
+
+      .contact {
+        display: flex;
+        gap: adapt(15, 10);
+
+        &__icon {
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img, svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        &__wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: adapt(15, 10);
+        }
+
+        &__name {
+          color: var(--main-text);
+        }
+
+        &__items {
+          display: flex;
+          flex-direction: column;
+          gap: adapt(10, 5);
+
+          a.item {
+            transition: color .15s;
+
+            &:hover {
+              color: var(--hover);
+            }
+          }
+
+          .item {
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 130%;
+            color: var(--head);
+          }
+        }
+      }
+
+      .socials {
+        display: flex;
+        flex-direction: column;
+        gap: adapt(20, 10);
+
+        &__head {
+          display: flex;
+          gap: adapt(15, 10);
+        }
+
+        &__items {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex-wrap: wrap;
+
+          .item {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img, svg {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+    }
+
+    &__map {
+      position: relative;
+      width: 620px;
+      flex-shrink: 0;
+      margin-top: 50px;
+
+      .map-holder {
+        position: sticky;
+        top: 15px;
+        aspect-ratio: 62/46;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+/*============ MEDIA ==================*/
+@media (max-width: 1500px) {
+  #contacts-block{
+    .contacts{
+      flex-direction: column;
+
+      &__map{
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+  }
+}
+@media (max-width: 1240px) {
+
+}
+
+@media (max-width: 1221px) {
+
+}
+
+@media (max-width: 1025px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 769px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 498px) {
+
+}
+
+@media (max-width: 375px) {
+
+}
